@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ExpoJamLogModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.jamlog.ExpoJamLogModule"]
+  }
+}
