@@ -38,6 +38,7 @@ PODS:
     - ExpoModulesCore
   - ExpoJamLog (0.1.0):
     - ExpoModulesCore
+    - JamLog (~> 1.1.2)
   - ExpoKeepAwake (14.1.4):
     - ExpoModulesCore
   - ExpoModulesCore (2.5.0):
@@ -72,6 +73,7 @@ PODS:
   - hermes-engine (0.79.5):
     - hermes-engine/Pre-built (= 0.79.5)
   - hermes-engine/Pre-built (0.79.5)
+  - JamLog (1.1.2)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1805,6 +1807,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - JamLog
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1974,7 +1977,7 @@ SPEC CHECKSUMS:
   ExpoAsset: ef06e880126c375f580d4923fdd1cdf4ee6ee7d6
   ExpoFileSystem: 7f92f7be2f5c5ed40a7c9efc8fa30821181d9d63
   ExpoFont: cf508bc2e6b70871e05386d71cab927c8524cc8e
-  ExpoJamLog: a6201ec5daf56a9d67de3a16532705c7e5d0ef40
+  ExpoJamLog: 4311bd65f02724419e08f6ae63cb9f28973216fc
   ExpoKeepAwake: bf0811570c8da182bfb879169437d4de298376e7
   ExpoModulesCore: 00a1b5c73248465bd0b93f59f8538c4573dac579
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
@@ -1982,6 +1985,7 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: f03b0e06d3882d71e67e45b073bb827da1a21aae
+  JamLog: 50db3a5b326f297e8daf4b863692a51f708ac0a6
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: 5f638f65935e273753b1f31a365db6a8d6dc53b5
   RCTRequired: 8b46a520ea9071e2bc47d474aa9ca31b4a935bd8

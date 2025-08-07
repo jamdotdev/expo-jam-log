@@ -1,38 +1,67 @@
-import { useEvent } from 'expo';
-import ExpoJamLog, { ExpoJamLogView } from 'expo-jam-log';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { useState } from "react";
+import {
+  Alert,
+  Button,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import ExpoJamLog, { Level } from "expo-jam-log";
+
+ExpoJamLog.bootstrap();
 
 export default function App() {
-  const onChangePayload = useEvent(ExpoJamLog, 'onChange');
+  const [selectedLevel, setSelectedLevel] = useState<Level>(Level.Info);
+  const [message, setMessage] = useState<string>("");
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{ExpoJamLog.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{ExpoJamLog.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await ExpoJamLog.setValueAsync('Hello from JS!');
-            }}
+        <Text style={styles.header}>JamLog Example</Text>
+
+        <Group name="Message">
+          <TextInput
+            style={styles.textInput}
+            value={message}
+            onChangeText={setMessage}
+            placeholder="Message"
           />
         </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
+
+        <Group name="Level">
+          <View style={styles.radioGroup}>
+            {Object.values(Level).map((level) => (
+              <TouchableOpacity
+                key={level}
+                style={styles.radioOption}
+                onPress={() => setSelectedLevel(level)}
+              >
+                <View
+                  style={[
+                    styles.radioCircle,
+                    selectedLevel === level && styles.radioSelected,
+                  ]}
+                />
+                <Text style={styles.radioText}>{level}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </Group>
-        <Group name="Views">
-          <ExpoJamLogView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
-        </Group>
+
+        <Button
+          title="Log to Jam"
+          onPress={() => ExpoJamLog.log(message, selectedLevel)}
+          disabled={message.trim() === ""}
+        />
+
+        <Button
+          title="Log to Console"
+          onPress={() => console[selectedLevel](message)}
+          disabled={message.trim() === ""}
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -58,16 +87,50 @@ const styles = {
   },
   group: {
     margin: 20,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
     padding: 20,
   },
   container: {
     flex: 1,
-    backgroundColor: '#eee',
+    backgroundColor: "#eee",
   },
   view: {
     flex: 1,
     height: 200,
+  },
+  levelButton: {
+    padding: 10,
+    backgroundColor: "#f0f0f0",
+    borderRadius: 5,
+  },
+  textInput: {
+    padding: 10,
+    backgroundColor: "#f9f9f9",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    fontSize: 16,
+  },
+  radioGroup: {
+    gap: 10,
+  },
+  radioOption: {
+    flexDirection:  "row",
+    gap: 10,
+  },
+  radioCircle: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "#ddd",
+  },
+  radioSelected: {
+    borderColor: "#007AFF",
+    backgroundColor: "#007AFF",
+  },
+  radioText: {
+    fontSize: 16,
   },
 };
