@@ -7,7 +7,7 @@ public class ExpoJamLogModule: Module {
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
     Function("log") { (message: String, level: Level) in
-      JamLog.log(message, level: .init(level))
+      JamLog.log(message, level: .init(level), includesTrace: false)
     }
   }
 

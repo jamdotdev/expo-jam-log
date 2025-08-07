@@ -22,7 +22,7 @@ A React Native module that lets you send log events to Jam for iOS so that they 
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
-  s.dependency 'JamLog', '~> 1.1.2'
+  s.dependency 'JamLog', '~> 1.1.3'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
