@@ -24,9 +24,18 @@ console.debug("Hello world!");
 
 ## Installation
 
-### Managed Expo projects
+`expo-jam-log` is a native module and is not available in Expo Go.
 
-For [managed](https://docs.expo.dev/archive/managed-vs-bare/) Expo projects, please follow the installation instructions in the [API documentation for the latest stable release](#api-documentation). If you follow the link and there is no documentation available then this library is not yet usable within managed projects &mdash; it is likely to be included in an upcoming Expo SDK release.
+### Expo projects
+
+To use this module in an Expo project:
+
+```sh
+npx expo install expo-jam-log
+npx expo prebuild
+```
+
+Refer to [Using libraries that include native code](https://docs.expo.dev/workflow/customizing/#using-libraries-that-include-native-code) for detailed installation instructions.
 
 ### Bare React Native projects
 
@@ -34,7 +43,7 @@ For bare React Native projects, you must ensure that you have [installed and con
 
 ### Add the package to your npm dependencies
 
-```
+```sh
 npm install expo-jam-log
 ```
 
