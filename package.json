@@ -1,6 +1,6 @@
 {
   "name": "expo-jam-log",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Log to Jam from iOS.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
